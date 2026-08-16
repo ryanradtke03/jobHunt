@@ -1,0 +1,8 @@
+{
+  "discipline": ["backend", "fullstack"],
+  "workMode": ["remote"],
+  "locations": ["Remote", "New York"],
+  "companySize": { "big": true, "med": true },
+  "excludeSeniority": ["senior", "staff", "principal", "director", "executive"],
+  "k": 15
+}

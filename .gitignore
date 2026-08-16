@@ -9,3 +9,5 @@ output/*
 # personal/local data — copy from the matching .example.json template to get started
 companies.json
 data/resume-pool.json
+data/jobs.json
+search-fields.json

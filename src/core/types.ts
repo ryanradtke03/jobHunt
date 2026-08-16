@@ -4,11 +4,14 @@ export type WorkMode = "remote" | "hybrid" | "onsite";
 
 export type CompanySize = "startup" | "small" | "med" | "big";
 
+export type SeniorityLevel = "senior" | "staff" | "principal" | "director" | "executive";
+
 export interface SearchFields {
   discipline: Discipline[];
   companySize: Partial<Record<CompanySize, boolean>>;
   locations: string[];
   workMode: WorkMode[];
+  excludeSeniority: SeniorityLevel[];
   k: number; // assumed: total cap per `find` run, not per company — unconfirmed, see Open Questions
 }
 
@@ -20,6 +23,7 @@ export interface Job {
   discipline?: Discipline;
   workMode?: WorkMode;
   location?: string;
+  seniority?: SeniorityLevel; // undefined = not detected as elevated (junior/mid/unspecified)
   source: string; // "greenhouse" | "lever" | etc
   foundAt: string; // ISO date
   status: "new" | "ignored" | "tailored" | "applied";

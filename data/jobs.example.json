@@ -1,0 +1,24 @@
+[
+  {
+    "title": "Backend Engineer",
+    "company": "Stripe",
+    "link": "https://job-boards.greenhouse.io/stripe/jobs/1234567",
+    "discipline": "backend",
+    "workMode": "remote",
+    "location": "Remote - US",
+    "source": "greenhouse",
+    "foundAt": "2026-08-01T12:00:00.000Z",
+    "status": "new"
+  },
+  {
+    "title": "Frontend Engineer, Design Systems",
+    "company": "Figma",
+    "link": "https://job-boards.greenhouse.io/figma/jobs/7654321",
+    "discipline": "frontend",
+    "workMode": "onsite",
+    "location": "San Francisco, CA",
+    "source": "greenhouse",
+    "foundAt": "2026-08-01T12:05:00.000Z",
+    "status": "ignored"
+  }
+]
