@@ -1,0 +1,77 @@
+[
+  {
+    "id": "acme-swe-intern",
+    "company": "Acme Corp",
+    "title": "Software Engineer Intern",
+    "location": "Remote",
+    "startDate": "2025-05",
+    "endDate": "2025-08",
+    "bullets": [
+      {
+        "text": "Built a REST API endpoint that reduced average response time by 40% by adding a Redis cache layer",
+        "disciplines": ["backend"]
+      },
+      {
+        "text": "Built a settings dashboard in React that let users manage the new cache preferences from the UI",
+        "disciplines": ["frontend"]
+      },
+      {
+        "text": "Shipped an end-to-end feature (API route + React form) that let users export their data as CSV",
+        "disciplines": ["backend", "frontend"]
+      },
+      {
+        "text": "Wrote integration tests covering 12 previously untested API routes, raising coverage from 61% to 89%",
+        "disciplines": ["backend", "qa"]
+      }
+    ]
+  },
+  {
+    "id": "acme-frontend-project",
+    "company": "Acme Corp",
+    "title": "Frontend Engineer (Capstone Project)",
+    "location": "Remote",
+    "startDate": "2024-09",
+    "endDate": "2024-12",
+    "bullets": [
+      {
+        "text": "Built a React component library used across 3 internal tools, cutting new-page dev time by ~30%",
+        "disciplines": ["frontend"]
+      },
+      {
+        "text": "Fixed a rendering bug affecting Safari users by rewriting a CSS grid layout to use flexbox fallbacks",
+        "disciplines": ["frontend"]
+      }
+    ]
+  },
+  {
+    "id": "acme-qa-project",
+    "company": "Acme Corp",
+    "title": "QA Engineer (Student Project)",
+    "location": "Remote",
+    "startDate": "2024-01",
+    "endDate": "2024-05",
+    "bullets": [
+      {
+        "text": "Designed and ran a regression test suite in Playwright that caught 8 release-blocking bugs before launch",
+        "disciplines": ["qa"]
+      },
+      {
+        "text": "Automated a manual smoke-test checklist, cutting release verification time from 2 hours to 15 minutes",
+        "disciplines": ["qa"]
+      }
+    ]
+  },
+  {
+    "id": "skills-summary",
+    "company": null,
+    "title": "Skills",
+    "location": null,
+    "startDate": null,
+    "endDate": null,
+    "bullets": [
+      {
+        "text": "TypeScript, Python, SQL, React, Node.js, Playwright, Docker, Git"
+      }
+    ]
+  }
+]

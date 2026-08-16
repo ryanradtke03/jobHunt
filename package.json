@@ -1,0 +1,26 @@
+{
+  "name": "jobhunt",
+  "version": "0.1.0",
+  "description": "Personal CLI to find, tailor, and track job applications",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "jobhunt": "./dist/index.js"
+  },
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.1",
+    "@notionhq/client": "^2.2.15",
+    "commander": "^12.1.0",
+    "docx": "^9.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
