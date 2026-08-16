@@ -1,5 +1,6 @@
 [
   {
+    "id": "a1b2c3d4e5",
     "title": "Backend Engineer",
     "company": "Stripe",
     "link": "https://job-boards.greenhouse.io/stripe/jobs/1234567",
@@ -11,6 +12,7 @@
     "status": "new"
   },
   {
+    "id": "f6a7b8c9d0",
     "title": "Frontend Engineer, Design Systems",
     "company": "Figma",
     "link": "https://job-boards.greenhouse.io/figma/jobs/7654321",

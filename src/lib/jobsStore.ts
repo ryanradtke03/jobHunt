@@ -7,6 +7,7 @@ const JOBS_PATH = path.join(process.cwd(), "data", "jobs.json");
 export async function loadJobs(): Promise<Job[]> {
   try {
     const raw = await readFile(JOBS_PATH, "utf-8");
+    if (raw.trim() === "") return [];
     return JSON.parse(raw) as Job[];
   } catch (err) {
     if ((err as NodeJS.ErrnoException).code === "ENOENT") return [];

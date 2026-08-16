@@ -1,4 +1,5 @@
 import type { Company, Discipline, Job, SeniorityLevel, WorkMode } from "../../core/types.js";
+import { jobIdFor } from "../jobId.js";
 
 interface GreenhouseJob {
   id: number;
@@ -75,6 +76,7 @@ function resolveLocation(gj: GreenhouseJob): string {
 function normalizeGreenhouseJob(gj: GreenhouseJob, company: Company): Job {
   const location = resolveLocation(gj);
   return {
+    id: jobIdFor(gj.absolute_url),
     title: gj.title,
     company: company.name,
     link: gj.absolute_url,

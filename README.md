@@ -24,6 +24,7 @@ npm run dev -- find                # search target companies, review keep/ignore
 npm run dev -- tailor <job-id>     # generate a tailored resume for a saved job
 npm run dev -- applied <job-id>    # mark a job applied, sync to Notion
 npm run dev -- feed                # not yet speced
+npm run dev -- sync                # push any locally-saved jobs missing a Notion page
 ```
 
 Or build once and run the compiled CLI:

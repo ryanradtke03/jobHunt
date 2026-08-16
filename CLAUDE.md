@@ -38,27 +38,30 @@ cp .env.example .env
 src/
   index.ts              # CLI entry — commander, wires commands/* to subcommands
   commands/
-    find.ts              # search target companies, review keep/ignore
-    tailor.ts             # generate a tailored resume for a saved job
+    find.ts              # search target companies, review keep/ignore, sync kept/tailored/applied jobs to Notion
+    tailor.ts             # stub — generate a tailored resume for a saved job
     applied.ts            # mark a job applied, sync to Notion
     feed.ts               # not yet speced — grows data/resume-pool.json over time
+    sync.ts                # backfill: push any locally-saved job missing a Notion page
   lib/
     ats/
       greenhouse.ts       # fetches + normalizes postings from Greenhouse's public Job Board API
       lever.ts             # stub — no company currently uses Lever
-    notion.ts              # syncs a Job to the Notion tracking database
-    resumeGen.ts           # calls Anthropic to select/reword resume-pool bullets, renders .docx/.pdf
+    notion.ts              # upserts a Job to the Notion tracking database (create if no notionPageId, else update)
+    resumeGen.ts           # stub — calls Anthropic to select/reword resume-pool bullets, renders .docx/.pdf
+    jobId.ts                # jobIdFor(link) — deterministic short id, used to address a job from the CLI
   core/
     types.ts               # all shared types (Job, Company, SearchFields, ResumeEntry, ResumeBullet, ...)
 ```
 
-All command implementations in `src/commands/` and all `lib/` functions are currently stubs: each prints its planned steps to stdout, then `throw new Error("not implemented")`. When implementing one for real, keep that print-then-throw pattern for any sibling stubs you don't touch.
+`tailor.ts`, `feed.ts`, `lib/resumeGen.ts`, and `lib/ats/lever.ts` are still stubs: each prints its planned steps to stdout, then `throw new Error("not implemented")`. When implementing one for real, keep that print-then-throw pattern for any sibling stubs you don't touch.
 
 ### Shared types (`src/core/types.ts`)
 
 Everything else imports from here — extend types in this file rather than redefining shapes locally. Notable shapes:
 
 - `Job.link` is the dedupe key across `find` runs — every reviewed job (kept *and* ignored) must be persisted, or ignored jobs get re-prompted on the next run.
+- `Job.id` is derived from `link` via `jobIdFor` (`src/lib/jobId.ts`) — it's what `tailor <job-id>` / `applied <job-id>` take, and is written to Notion as a `JobID` property so it's copyable from there. `Job.notionPageId` makes `syncJobToNotion` an upsert instead of creating duplicate pages; `ignored` jobs are deliberately never synced to Notion.
 - `Company.ats` is `"greenhouse" | "lever" | "ashby"`, but only the `greenhouse` adapter exists. `find` must skip and warn on any `ats` value with no adapter rather than failing the whole run.
 - `ResumeBullet.disciplines` is tagged per-bullet, not per-entry (`ResumeEntry` has no discipline field) — a single job entry can mix bullets relevant to different disciplines (e.g. a fullstack role with backend-only, frontend-only, and cross-cutting bullets). Omitting `disciplines` on a bullet means it applies to every discipline (e.g. a skills line).
 - `SearchFields.k` is currently assumed to be a total cap per `find` run, not per company — unconfirmed, see Open Questions in `jobhunt-handoff.md`.
@@ -76,6 +79,6 @@ Greenhouse's public Job Board API (`boards-api.greenhouse.io/v1/boards/{token}/j
 ### Build order (see `jobhunt-handoff.md` for full detail)
 
 1. Consolidate existing resume variants into `data/resume-pool.json` (not started).
-2. Build and test `tailor` against a pasted JD before wiring up job search — this is where output quality lives.
-3. Build `find` for Stripe/Figma (tokens confirmed live), then Vercel once its token is confirmed.
-4. Wire `applied` and full Notion sync last.
+2. Build and test `tailor` against a pasted JD before wiring up job search — this is where output quality lives. **Still stubbed** — do this next.
+3. ~~Build `find` for Stripe/Figma (tokens confirmed live), then Vercel once its token is confirmed.~~ Done.
+4. ~~Wire `applied` and full Notion sync.~~ Done — `find` syncs kept jobs live, `sync` backfills anything missing a Notion page, `applied` flips status and re-syncs.

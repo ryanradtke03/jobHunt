@@ -4,6 +4,7 @@ import path from "node:path";
 import type { Company, CompanySize, Discipline, Job, SearchFields, SeniorityLevel, WorkMode } from "../core/types.js";
 import { fetchGreenhouseJobs } from "../lib/ats/greenhouse.js";
 import { appendJobs, loadExistingLinks } from "../lib/jobsStore.js";
+import { syncJobToNotion } from "../lib/notion.js";
 
 const DEFAULT_K = 20;
 const COMPANIES_PATH = path.join(process.cwd(), "companies.json");
@@ -136,6 +137,20 @@ function reviewJobs(rl: Interface, jobs: Job[]): Promise<Job[]> {
   });
 }
 
+// Ignored jobs don't get a Notion page — they're dismissed, not tracked.
+// A per-job sync failure is warned and skipped rather than aborting the run:
+// the local save already happened and shouldn't be lost over a network blip.
+async function syncReviewedJobs(jobs: Job[]): Promise<void> {
+  for (const job of jobs) {
+    if (job.status === "ignored") continue;
+    try {
+      job.notionPageId = await syncJobToNotion(job);
+    } catch (err) {
+      console.warn(`Notion sync failed for ${job.company} — ${job.title}: ${(err as Error).message}`);
+    }
+  }
+}
+
 async function loadCompanies(): Promise<Company[] | undefined> {
   try {
     const raw = await readFile(COMPANIES_PATH, "utf-8");
@@ -206,6 +221,7 @@ export async function find(options: FindCliOptions): Promise<void> {
     return;
   }
 
+  await syncReviewedJobs(reviewed);
   await appendJobs(reviewed);
   const kept = reviewed.filter((job) => job.status === "new").length;
   console.log(`Saved ${reviewed.length} jobs (${kept} kept, ${reviewed.length - kept} ignored).`);

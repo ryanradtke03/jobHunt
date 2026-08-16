@@ -16,6 +16,7 @@ export interface SearchFields {
 }
 
 export interface Job {
+  id: string; // stable, derived from link — used to address a job from the CLI (tailor/applied)
   title: string;
   company: string;
   link: string; // dedupe key
@@ -27,6 +28,8 @@ export interface Job {
   source: string; // "greenhouse" | "lever" | etc
   foundAt: string; // ISO date
   status: "new" | "ignored" | "tailored" | "applied";
+  dateApplied?: string; // ISO date, stamped by `applied`
+  notionPageId?: string; // set once synced — makes syncJobToNotion an upsert
 }
 
 export interface Company {

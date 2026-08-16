@@ -4,6 +4,13 @@ import { find, type FindCliOptions } from "./commands/find.js";
 import { tailor } from "./commands/tailor.js";
 import { applied } from "./commands/applied.js";
 import { feed } from "./commands/feed.js";
+import { sync, type SyncCliOptions } from "./commands/sync.js";
+
+try {
+  process.loadEnvFile();
+} catch (err) {
+  if ((err as NodeJS.ErrnoException).code !== "ENOENT") throw err;
+}
 
 const program = new Command();
 
@@ -39,5 +46,11 @@ program
   .command("feed")
   .description("Add new content to the resume pool (not yet speced)")
   .action(feed);
+
+program
+  .command("sync")
+  .description("Push any locally-saved jobs that don't yet have a Notion page")
+  .option("--force", "re-push every tracked job, updating existing Notion pages in place")
+  .action((options: SyncCliOptions) => sync(options));
 
 program.parseAsync(process.argv);
