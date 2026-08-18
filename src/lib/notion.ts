@@ -32,6 +32,7 @@ function propertiesFor(job: Job) {
     ...(job.location ? { Location: { rich_text: [{ text: { content: job.location } }] } } : {}),
     ...(job.workMode ? { WorkMode: { select: { name: job.workMode } } } : {}),
     ...(job.discipline ? { Discipline: { select: { name: job.discipline } } } : {}),
+    ...(job.resumePath ? { ResumeFile: { rich_text: [{ text: { content: job.resumePath } }] } } : {}),
     JobID: { rich_text: [{ text: { content: job.id } }] },
   };
 }

@@ -1,77 +1,120 @@
-[
-  {
-    "id": "acme-swe-intern",
-    "company": "Acme Corp",
-    "title": "Software Engineer Intern",
-    "location": "Remote",
-    "startDate": "2025-05",
-    "endDate": "2025-08",
-    "bullets": [
-      {
-        "text": "Built a REST API endpoint that reduced average response time by 40% by adding a Redis cache layer",
-        "disciplines": ["backend"]
-      },
-      {
-        "text": "Built a settings dashboard in React that let users manage the new cache preferences from the UI",
-        "disciplines": ["frontend"]
-      },
-      {
-        "text": "Shipped an end-to-end feature (API route + React form) that let users export their data as CSV",
-        "disciplines": ["backend", "frontend"]
-      },
-      {
-        "text": "Wrote integration tests covering 12 previously untested API routes, raising coverage from 61% to 89%",
-        "disciplines": ["backend", "qa"]
-      }
+{
+  "contact": {
+    "name": "Jane Example",
+    "email": "jane@example.com",
+    "phone": "(555) 555-5555",
+    "location": "Austin, TX",
+    "links": [
+      { "label": "GitHub", "display": "github.com/janeexample", "url": "https://github.com/janeexample" },
+      { "label": "LinkedIn", "display": "linkedin.com/in/janeexample", "url": "https://www.linkedin.com/in/janeexample/" }
     ]
   },
-  {
-    "id": "acme-frontend-project",
-    "company": "Acme Corp",
-    "title": "Frontend Engineer (Capstone Project)",
-    "location": "Remote",
-    "startDate": "2024-09",
-    "endDate": "2024-12",
-    "bullets": [
-      {
-        "text": "Built a React component library used across 3 internal tools, cutting new-page dev time by ~30%",
-        "disciplines": ["frontend"]
-      },
-      {
-        "text": "Fixed a rendering bug affecting Safari users by rewriting a CSS grid layout to use flexbox fallbacks",
-        "disciplines": ["frontend"]
-      }
-    ]
-  },
-  {
-    "id": "acme-qa-project",
-    "company": "Acme Corp",
-    "title": "QA Engineer (Student Project)",
-    "location": "Remote",
-    "startDate": "2024-01",
-    "endDate": "2024-05",
-    "bullets": [
-      {
-        "text": "Designed and ran a regression test suite in Playwright that caught 8 release-blocking bugs before launch",
-        "disciplines": ["qa"]
-      },
-      {
-        "text": "Automated a manual smoke-test checklist, cutting release verification time from 2 hours to 15 minutes",
-        "disciplines": ["qa"]
-      }
-    ]
-  },
-  {
-    "id": "skills-summary",
-    "company": null,
-    "title": "Skills",
-    "location": null,
-    "startDate": null,
-    "endDate": null,
-    "bullets": [
-      {
-        "text": "TypeScript, Python, SQL, React, Node.js, Playwright, Docker, Git"
-      }
-    ]
-  }
-]
+  "entries": [
+    {
+      "id": "acme-swe-intern",
+      "section": "experience",
+      "company": "Acme Corp",
+      "title": "Software Engineer Intern",
+      "location": "Remote",
+      "startDate": "2025-05",
+      "endDate": "2025-08",
+      "technologies": ["TypeScript", "React", "Node.js", "Redis"],
+      "bullets": [
+        {
+          "id": "acme-swe-intern-b1",
+          "text": "Built a REST API endpoint that reduced average response time by 40% by adding a Redis cache layer",
+          "disciplines": ["backend"]
+        },
+        {
+          "id": "acme-swe-intern-b2",
+          "text": "Built a settings dashboard in React that let users manage the new cache preferences from the UI",
+          "disciplines": ["frontend"]
+        },
+        {
+          "id": "acme-swe-intern-b3",
+          "text": "Shipped an end-to-end feature (API route + React form) that let users export their data as CSV",
+          "disciplines": ["backend", "frontend"]
+        },
+        {
+          "id": "acme-swe-intern-b4",
+          "text": "Wrote integration tests covering 12 previously untested API routes, raising coverage from 61% to 89%",
+          "disciplines": ["backend", "qa"]
+        }
+      ]
+    },
+    {
+      "id": "acme-frontend-project",
+      "section": "project",
+      "company": null,
+      "title": "Acme Component Library",
+      "location": null,
+      "startDate": null,
+      "endDate": null,
+      "technologies": ["React", "TypeScript"],
+      "bullets": [
+        {
+          "id": "acme-frontend-project-b1",
+          "text": "Built a React component library used across 3 internal tools, cutting new-page dev time by ~30%",
+          "disciplines": ["frontend"]
+        },
+        {
+          "id": "acme-frontend-project-b2",
+          "text": "Fixed a rendering bug affecting Safari users by rewriting a CSS grid layout to use flexbox fallbacks",
+          "disciplines": ["frontend"]
+        }
+      ]
+    },
+    {
+      "id": "acme-qa-project",
+      "section": "project",
+      "company": null,
+      "title": "Release Regression Suite",
+      "location": null,
+      "startDate": null,
+      "endDate": null,
+      "technologies": ["Playwright"],
+      "bullets": [
+        {
+          "id": "acme-qa-project-b1",
+          "text": "Designed and ran a regression test suite in Playwright that caught 8 release-blocking bugs before launch",
+          "disciplines": ["qa"]
+        },
+        {
+          "id": "acme-qa-project-b2",
+          "text": "Automated a manual smoke-test checklist, cutting release verification time from 2 hours to 15 minutes",
+          "disciplines": ["qa"]
+        }
+      ]
+    },
+    {
+      "id": "skills-summary",
+      "section": "skills",
+      "company": null,
+      "title": "Skills",
+      "location": null,
+      "startDate": null,
+      "endDate": null,
+      "bullets": [
+        { "id": "skills-summary-b1", "text": "TypeScript", "category": "language" },
+        { "id": "skills-summary-b2", "text": "Python", "category": "language" },
+        { "id": "skills-summary-b3", "text": "SQL", "category": "language" },
+        { "id": "skills-summary-b4", "text": "React", "category": "framework" },
+        { "id": "skills-summary-b5", "text": "Node.js", "category": "framework" },
+        { "id": "skills-summary-b6", "text": "Redis", "category": "database" },
+        { "id": "skills-summary-b7", "text": "Docker", "category": "infra" },
+        { "id": "skills-summary-b8", "text": "Playwright", "category": "testing" },
+        { "id": "skills-summary-b9", "text": "Git", "category": "tool" }
+      ]
+    },
+    {
+      "id": "education-acme-university",
+      "section": "education",
+      "company": "Acme University",
+      "title": "B.S. Computer Science",
+      "location": "Austin, TX",
+      "startDate": null,
+      "endDate": "2025-05",
+      "bullets": []
+    }
+  ]
+}

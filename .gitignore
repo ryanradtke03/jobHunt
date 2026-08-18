@@ -9,5 +9,10 @@ output/*
 # personal/local data — copy from the matching .example.json template to get started
 companies.json
 data/resume-pool.json
+data/resume/
 data/jobs.json
 search-fields.json
+resume-pool.json
+
+# personal resume data bundled with the tailor-resume skill — not the skill itself
+.claude/skills/tailor-resume/resources/

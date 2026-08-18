@@ -1,4 +1,5 @@
 import type { Company, Discipline, Job, SeniorityLevel, WorkMode } from "../../core/types.js";
+import { stripHtml } from "../html.js";
 import { jobIdFor } from "../jobId.js";
 
 interface GreenhouseJob {
@@ -87,6 +88,7 @@ function normalizeGreenhouseJob(gj: GreenhouseJob, company: Company): Job {
     source: "greenhouse",
     foundAt: new Date().toISOString(),
     status: "new",
+    description: stripHtml(gj.content),
   };
 }
 

@@ -32,10 +32,11 @@ program
   .action((options: FindCliOptions) => find(options));
 
 program
-  .command("tailor <job-id>")
-  .description("Generate a tailored resume for a saved job")
+  .command("tailor <target>")
+  .description("Generate a tailored resume for a saved job id or a raw job posting URL")
   .option("--file <path>", "read the job description from a local file instead of the stored URL")
-  .action((jobId: string, options: { file?: string }) => tailor(jobId, options));
+  .option("--discipline <value>", "override the job's inferred discipline: frontend,backend,fullstack,qa,infra,mobile,data")
+  .action((target: string, options: { file?: string; discipline?: string }) => tailor(target, options));
 
 program
   .command("applied <job-id>")
